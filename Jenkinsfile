@@ -148,6 +148,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'b1b682d6-2643-4c47-a6a0-777192f98673', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    echo "Deploying with username ${env.USERNAME}"
+                    // Use the credentials in your deployment steps
+                    sh 'echo $USERNAME'
+                    sh 'echo $PASSWORD'
+                }
+            }
+        }
         
         stage('Archive Artifacts') {
             steps {
