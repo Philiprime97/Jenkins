@@ -16,6 +16,14 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                echo "Building Volt app in environment: ${env.APP_ENV}"
+                echo "Debug mode is set to: ${env.APP_DEBUG}"
+                // Build steps here
+            }
+        }
+
         stage('Setup Python Environment and Install Dependencies') {
             steps {
                 dir("${PROJECT_HOME}") {
