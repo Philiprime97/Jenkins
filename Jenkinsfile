@@ -140,16 +140,15 @@ pipeline {
                 }
             }
         }
-    }
-
-    
-    stage('Archive Artifacts') {
+        
+        stage('Archive Artifacts') {
             steps {
                 dir("${PROJECT_HOME}") {
                     archiveArtifacts artifacts: 'flask_app.log', allowEmptyArchive: true
                         }
                     }
                 }
+    }
             
 
     post {
@@ -160,4 +159,4 @@ pipeline {
             }
         }
     }
-
+}
