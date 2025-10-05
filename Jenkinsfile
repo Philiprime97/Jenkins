@@ -40,6 +40,24 @@ pipeline {
             }
         }
 
+        stage('Parallel Tests') {
+            parallel {
+                stage('Test on Chrome') {
+                    steps {
+                        echo 'Testing VOLT on Chrome...'
+                        // Chrome test steps here
+                    }
+                }
+                stage('Test on Firefox') {
+                    steps {
+                        echo 'Testing VOLT on Firefox...'
+                        // Firefox test steps here
+                    }
+                }
+            }
+        }
+
+
         stage('Run Flask Application') {
             steps {
                 dir("${PROJECT_HOME}") {
